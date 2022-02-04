@@ -98,9 +98,7 @@ class rtlluSpider(scrapy.Spider):
                     most_read = most_read
                 )
 
-                # print(article)
                 return article
-                # yield article
 
 
     
