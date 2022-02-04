@@ -15,7 +15,7 @@ from datetime import datetime
 settings = get_project_settings()
 today = datetime.today()
 
-class ArticlesPipeline:
+class LUArticlesPipeline:
     def __init__(self):
         conn = pymongo.MongoClient(
             settings.get('MONGO_HOST'),
@@ -23,6 +23,20 @@ class ArticlesPipeline:
         )
         db = conn[settings.get('MONGO_DB_NAME')]
         self.collection = db["lu_articles_" + today.strftime("%Y%m%d%H%M")]
+
+    def process_item(self, item, spider):
+        if isinstance(item, ArticleItem):
+            self.collection.insert_one(asdict(item))
+        return item
+
+class ENArticlesPipeline:
+    def __init__(self):
+        conn = pymongo.MongoClient(
+            settings.get('MONGO_HOST'),
+            settings.get('MONGO_PORT')
+        )
+        db = conn[settings.get('MONGO_DB_NAME')]
+        self.collection = db["en_articles_" + today.strftime("%Y%m%d%H%M")]
 
     def process_item(self, item, spider):
         if isinstance(item, ArticleItem):
