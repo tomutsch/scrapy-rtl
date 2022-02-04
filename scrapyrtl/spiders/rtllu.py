@@ -1,10 +1,10 @@
 import scrapy
+from scrapy.crawler import CrawlerProcess
 from ..items import ArticleItem, MostReadItem
 import unicodedata
 import os
 from scrapy.linkextractors import LinkExtractor
 from datetime import datetime
-from pprint import pprint
 
 ###
 #   Author: Ries Christian
@@ -197,5 +197,7 @@ class todayrtlluSpider(scrapy.Spider):
 
                 return article
 
-
-       
+process = CrawlerProcess()
+process.crawl(rtlluSpider)
+process.crawl(todayrtlluSpider)
+process.start()
