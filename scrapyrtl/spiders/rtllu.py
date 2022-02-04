@@ -13,7 +13,7 @@ from pprint import pprint
 #   rtl.lu/news/national then save data to mongo db collection
 ##
 class rtlluSpider(scrapy.Spider):
-    name = 'news'
+    name = 'rtllu'
     # dont leave our target
     allowed_domains = ['rtl.lu']
     # define where we want to start crawling
@@ -100,7 +100,12 @@ class rtlluSpider(scrapy.Spider):
 
                 return article
 
-
+class todayrtllu(scrapy.Spider):
+    name = "todayrtllu"
+    # dont leave our target
+    allowed_domains = ['rtl.lu']
+    # define where we want to start crawling
+    start_urls = ['https://today.rtl.lu/news/luxembourg']
     
         
 
