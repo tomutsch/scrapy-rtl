@@ -12,7 +12,7 @@ from pprint import pprint
 #   Description: Crawl every news article that is found on 
 #   rtl.lu/news/national then save data to mongo db collection
 ##
-class NewsSpider(scrapy.Spider):
+class rtlluSpider(scrapy.Spider):
     name = 'news'
     # dont leave our target
     allowed_domains = ['rtl.lu']
