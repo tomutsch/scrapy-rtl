@@ -42,3 +42,17 @@ class ENArticlesPipeline:
         if isinstance(item, ArticleItem):
             self.collection.insert_one(asdict(item))
         return item
+
+class FRArticlesPipeline:
+    def __init__(self):
+        conn = pymongo.MongoClient(
+            settings.get('MONGO_HOST'),
+            settings.get('MONGO_PORT')
+        )
+        db = conn[settings.get('MONGO_DB_NAME')]
+        self.collection = db["fr_articles_" + today.strftime("%Y%m%d%H%M")]
+
+    def process_item(self, item, spider):
+        if isinstance(item, ArticleItem):
+            self.collection.insert_one(asdict(item))
+        return item
