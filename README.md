@@ -34,5 +34,5 @@ pip install -r requirements.txt
 ## Usage
 
 ```bash
-scrapy crawl news
+scrapy crawl
 ```
