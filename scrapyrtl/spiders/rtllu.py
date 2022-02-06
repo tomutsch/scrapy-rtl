@@ -81,13 +81,13 @@ class rtlluSpider(scrapy.Spider):
                 # get most read articles in sidebar
                 mr_articles = response.css('div.card.card--most-read-aside')
                 for mr_article in mr_articles:
-                    url = mr_article.css('a::attr(href)').extract_first()
+                    url_most_read = mr_article.css('a::attr(href)').extract_first()
                     # Build most read article item and insert to list
                     most_read.append(MostReadItem(
                         _id = os.path.basename(url).split('.')[0],
                         title = mr_article.css('span.card__title::text').get(),
                         kicker = mr_article.css('span.card__kicker::text').get(),
-                        url = url
+                        url = url_most_read
                     ))
 
                 # Build article item
@@ -174,13 +174,13 @@ class todayrtlluSpider(scrapy.Spider):
                 # get most read articles in sidebar
                 mr_articles = response.css('div.card.card--most-read-aside')
                 for mr_article in mr_articles:
-                    url = mr_article.css('a::attr(href)').extract_first()
+                    url_most_read = mr_article.css('a::attr(href)').extract_first()
                     # Build most read article item and insert to list
                     most_read.append(MostReadItem(
                         _id = os.path.basename(url).split('.')[0],
                         title = mr_article.css('span.card__title::text').get(),
                         kicker = mr_article.css('span.card__kicker::text').get(),
-                        url = url
+                        url = url_most_read
                     ))
 
                 # Build article item
@@ -267,13 +267,13 @@ class frrtlluSpider(scrapy.Spider):
                 # get most read articles in sidebar
                 mr_articles = response.css('div.card.card--most-read-aside')
                 for mr_article in mr_articles:
-                    url = mr_article.css('a::attr(href)').extract_first()
+                    url_most_read = mr_article.css('a::attr(href)').extract_first()
                     # Build most read article item and insert to list
                     most_read.append(MostReadItem(
                         _id = os.path.basename(url).split('.')[0],
                         title = mr_article.css('span.card__title::text').get(),
                         kicker = mr_article.css('span.card__kicker::text').get(),
-                        url = url
+                        url = url_most_read
                     ))
 
                 # Build article item
