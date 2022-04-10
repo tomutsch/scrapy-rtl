@@ -23,6 +23,7 @@ Create a virtual environment with [python3](https://www.python.org/downloads/sou
 
 ```bash
 python3 -m venv .venv
+source .venv/bin/activate
 ```
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the requirements.
